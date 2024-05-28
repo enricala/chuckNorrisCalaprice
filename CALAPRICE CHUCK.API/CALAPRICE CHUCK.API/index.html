@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Calaprice</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+        <div class="riquadro-bottone">
+            <h1 id="titolo">Battute su Chuck Norris</h1>
+            <img src="immagini/1.jpg" alt="" class="immagine">
+        </div>
+    
+        <button id="btnJoke">Ottieni una barzelletta</button>
+        <p id="jokeText"></p>
+
+    
+
+    
+
+
+    <script>
+        document.getElementById("btnJoke").addEventListener("click", function() {
+            fetch("https://api.chucknorris.io/jokes/random")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("jokeText").innerText = data.value;
+                })
+                .catch(error => {
+                    console.error('Errore durante il recupero della barzelletta: ', error);
+                });
+        });
+    </script>
+
+</body>
+</html>
